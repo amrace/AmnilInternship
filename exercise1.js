@@ -45,18 +45,18 @@ const personDetails = [
   
   //convert dates string to date format and print current age
   function getAge(){
-      var second = 1000;
-      var minute = second * 60;
-      var hour = minute * 60;
-      var day = hour * 24;
-      var month = day * 30;
-      var year = month * 12;
+      let second = 1000;
+      let minute = second * 60;
+      let hour = minute * 60;
+      let day = hour * 24;
+      let month = day * 30;
+      let year = month * 12;
   
       //Converted the mapped string to date then milisecond
       let dob = stringToDate.map(date => new Date(date).valueOf());
       let currentDate = new Date().valueOf();
       let currentAge = (currentDate - dob)/year;
-      let noOfDays = currentAge * 365;
+      let noOfDays = (currentAge * 365);
       console.log("The total number of days in your age is:" + noOfDays.toFixed());
       return currentAge;
   }
