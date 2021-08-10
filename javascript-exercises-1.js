@@ -14,3 +14,16 @@ function checkCubeOfNumber(num){
     return num**3;
 }
 console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
+
+//Exercise Three
+  let providedArray = [
+    {id: 1, fullName:'John Doe'}, 
+    {id: 2, fullName:'Jim Doe'}, 
+    {id: 3, fullName:'Jane Doe'}
+  ];
+  //Creating reducer fucntion
+  function arrayToObject(accumulater, currentElement){
+    return {...accumulater,[currentElement.id] : currentElement}
+  }
+  const objectArray = providedArray.reduce(arrayToObject, {});
+  console.log(objectArray);
