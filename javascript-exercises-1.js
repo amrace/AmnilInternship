@@ -27,3 +27,5 @@ console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
   }
   const objectArray = providedArray.reduce(arrayToObject, {});
   console.log(objectArray);
+
+  //
