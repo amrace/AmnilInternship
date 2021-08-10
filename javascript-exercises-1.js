@@ -28,4 +28,11 @@ console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
   const objectArray = providedArray.reduce(arrayToObject, {});
   console.log(objectArray);
 
-  //
+  //Exercise Four
+  let providedObject = {
+    1: { fullName:'John Doe'}, 
+    2: {fullName:'Jim Doe'}, 
+    3: {fullName:'Jane Doe'} 
+  };
+  let array = Object.values(providedArray);
+  console.log(array);
