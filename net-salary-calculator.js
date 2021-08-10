@@ -1,5 +1,5 @@
 const employees = [
-    {name:"John Doe", grossSalary:9500},
+    {name:"John Doe", grossSalary:26500},
     {name:"Jane Doe", grossSalary:16500},
     {name:"Jim Doe", grossSalary:24999},
     {name:"Josh Doe", grossSalary:37000},
