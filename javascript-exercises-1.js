@@ -8,3 +8,9 @@ function checkPalindrome(string) {
      const check = checkPalindrome("level");
      const check1 = checkPalindrome("shovel");
      console.log(check ,check1); 
+
+//Exercise Two
+function checkCubeOfNumber(num){
+    return num**3;
+}
+console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
