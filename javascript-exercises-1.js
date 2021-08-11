@@ -21,7 +21,7 @@ console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
     {id: 2, fullName:'Jim Doe'}, 
     {id: 3, fullName:'Jane Doe'}
   ];
-  //Creating reducer fucntion
+  //Creating reducer function
   function arrayToObject(accumulater, currentElement){
     return {...accumulater,[currentElement.id] : currentElement}
   }
@@ -36,3 +36,16 @@ console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
   };
   let array = Object.values(providedArray);
   console.log(array);
+
+  //Exercise Seven
+  function printRecursive(num){
+    console.log(num);
+    const number = num -1;
+    if(number>=0){
+        printRecursive(number);
+    }if(number>=0){
+      printRecursive(-number);
+    }
+  }
+  printRecursive(5);
+  printRecursive(-5);
