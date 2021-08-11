@@ -78,10 +78,10 @@ console.log(person.fullName());
 console.log(person.age());
 
 //Exercise Five
-const points = { 
+/* const points = { 
   p1: [2, 3], 
   p2: [6, 7]
 }; 
 get: displacement(){
   return("");
-};
+}; */
