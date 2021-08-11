@@ -72,8 +72,16 @@ person.age=function(){
   const currentDate = new Date().valueOf();
   let currentAge=(currentDate - new Date(person.dob)) / year;
   let noOfDays = (currentAge - Math.floor(currentAge)) * 365;
-  return(`age: ${currentAge} days: ${noOfDays}` );
+  return(`age: ${currentAge.toFixed()} days: ${noOfDays.toFixed()}` );
 }
 console.log(person.fullName());
 console.log(person.age());
 
+//Exercise Five
+const points = { 
+  p1: [2, 3], 
+  p2: [6, 7]
+}; 
+get: displacement(){
+  return("");
+};
