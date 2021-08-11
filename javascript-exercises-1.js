@@ -49,3 +49,31 @@ console.log(checkCubeOfNumber(4));//passed value after calling the fucntion.
   }
   printRecursive(5);
   printRecursive(-5);
+
+//Exercise Six
+function Person(person_fisrtName, person_lastName, person_dob){
+  this.firstName= person_fisrtName;
+  this.lastName= person_lastName;
+  this.dob= person_dob;
+
+  this.fullName= function(){
+    return(`${this.firstName} ${this.lastName}`);
+  }
+}
+const person = new Person("Jhon","Doe","1996-03-27"); 
+  
+person.age=function(){
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+  const month = day * 30;
+  const year = month * 12;
+  const currentDate = new Date().valueOf();
+  let currentAge=(currentDate - new Date(person.dob)) / year;
+  let noOfDays = (currentAge - Math.floor(currentAge)) * 365;
+  return(`age: ${currentAge} days: ${noOfDays}` );
+}
+console.log(person.fullName());
+console.log(person.age());
+
