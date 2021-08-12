@@ -1,7 +1,7 @@
 //Exercise One
  String.prototype.checkPalindrome = function checkPalindrome(){
         let string = this.toLowerCase();
-        let reversedString = string.split("").reverse().join(""); //Reverse the number
+        let reversedString = string.split("").reverse().join(""); //Reverse the string
         return reversedString === string; // Check if original string and reversed string are the same.
      }
      let word1 = "level";
