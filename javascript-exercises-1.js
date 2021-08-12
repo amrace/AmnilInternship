@@ -63,10 +63,8 @@ function Person(person_fisrtName, person_lastName, person_dob){
 }
 const person = new Person("Jhon","Doe","1996-03-27");   
 person.age=function(){
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
+  //Conversion in millisecond
+  const day = 1000*60*60*24;
   const month = day * 30;
   const year = month * 12;
   const currentDate = new Date().valueOf();
