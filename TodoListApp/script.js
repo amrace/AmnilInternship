@@ -1,12 +1,58 @@
+document.write(
+  '<script type="text/javascript" src="localstorage.js" ></script>'
+);
 //Select elements from dom
 const form = document.getElementById("form");
 const inputValue = document.getElementById("inputItem");
 const itemsList = document.getElementById("itemsList");
 const filter = document.querySelectorAll(".nav-item");
 const deleteButton = document.getElementById("deleteAll");
+const sortByName = document.getElementById("sortByName");
 
 //Created an empty items list
 let todoItems = [];
+
+// sort by name
+sortByName.addEventListener("click", () => {
+  let array = sortedArray(todoItems);
+  setLocalStorage(array);
+  todoItems = array;
+  getList(array);
+});
+function sortedArray(todoItems) {
+  let sortedarray1 = todoItems.sort(function (a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+  });
+  return sortedarray1;
+}
+
+//Implementing search with keyup
+const search = () => {
+  let value = document.getElementById("Search").value;
+  let data = searchTodo(value, todoItems);
+  getList(data);
+};
+
+const searchTodo = (value, data) => {
+  let filteredTodo = [];
+  for (let i = 0; i < data.length; i++) {
+    value = value.toLowerCase();
+    let name = data[i].name.toLowerCase();
+    if (name.includes(value)) {
+      filteredTodo.push(data[i]);
+    }
+  }
+  return filteredTodo;
+};
 
 //Delete an item
 const deteleItem = (item) => {
@@ -27,23 +73,6 @@ deleteButton.addEventListener("click", function (e) {
   getList(todoItems);
 });
 
-//set todolist in local storage
-const setLocalStorage = function (todoItems) {
-  localStorage.setItem("todoItems", JSON.stringify(todoItems));
-};
-
-// get localstorage from the page
-const getLocalStorage = function () {
-  const todoStorage = localStorage.getItem("todoItems");
-  if (todoStorage === "undefined" || todoStorage === null) {
-    todoItems = [];
-  } else {
-    todoItems = JSON.parse(todoStorage);
-    console.log("items", todoItems);
-  }
-  getList(todoItems);
-};
-
 //Add new todo to list
 document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
@@ -55,12 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemObj = {
         name: itemName,
         complete: false,
-        createdAt: new Date().getTime(),
+        createdAt: performance.now(),
       };
+
       todoItems.push(itemObj);
       setLocalStorage(todoItems);
       getList(todoItems);
       inputValue.value = "";
+      let endTime = performance.now();
+      console.log(endTime);
     }
   });
   getLocalStorage();
@@ -74,6 +106,7 @@ const getList = function (todoItems) {
       const iconClass = item.complete
         ? "bi-check-circle-fill"
         : "bi-check-circle";
+      document.getElementsByClassName(iconClass).disabled = true;
       itemsList.insertAdjacentHTML(
         "beforeend",
         `<li
@@ -84,6 +117,7 @@ const getList = function (todoItems) {
           align-items-center
         "
       >
+      
         <span class="name" data-time="${item.createdAt}">${item.name}</span>
         <span>
           <a href="#" data-complete><i class="bi ${iconClass}"></i></a>
@@ -115,6 +149,7 @@ const handleItem = (itemData) => {
             ? "bi-check-circle-fill"
             : "bi-check-circle";
           currentItem.complete = currentItem.complete ? false : true;
+
           todoItems.splice(itemIndex, 1, currentItem);
           setLocalStorage(todoItems);
           const iconClass = currentItem.complete
