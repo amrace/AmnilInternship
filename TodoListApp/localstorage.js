@@ -14,3 +14,7 @@ const getLocalStorage = function () {
   }
   getList(todoItems);
 };
+/* export default {
+  setLocalStorage: setLocalStorage,
+  getLocalStorage: getLocalStorage,
+}; */

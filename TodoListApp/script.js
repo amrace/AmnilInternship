@@ -1,6 +1,7 @@
 document.write(
   '<script type="text/javascript" src="localstorage.js" ></script>'
 );
+//import local from "./localstorages/localstorage.js";
 //Select elements from dom
 const form = document.getElementById("form");
 const inputValue = document.getElementById("inputItem");
@@ -15,6 +16,7 @@ let todoItems = [];
 // sort by name
 sortByName.addEventListener("click", () => {
   let array = sortedArray(todoItems);
+  //local.setLocalStorage(array);
   setLocalStorage(array);
   todoItems = array;
   getList(array);
@@ -106,7 +108,6 @@ const getList = function (todoItems) {
       const iconClass = item.complete
         ? "bi-check-circle-fill"
         : "bi-check-circle";
-      document.getElementsByClassName(iconClass).disabled = true;
       itemsList.insertAdjacentHTML(
         "beforeend",
         `<li
@@ -167,7 +168,6 @@ const handleItem = (itemData) => {
             itemsList.removeChild(item);
             deleteItem(item);
             setLocalStorage(todoItems);
-            //return todoItems.filter((item) => item != itemData);
           }
         });
     }
